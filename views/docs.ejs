@@ -1,0 +1,173 @@
+<%- include("header") -%>
+<body>
+    <div class="container">
+        <h1 class="title">To-Do List Project Documentation</h1>
+
+        <!-- Introduction and Getting Started sections (as previously shown) -->
+
+        <section class="section">
+            <h2 class="section-title">Dependencies</h2>
+            <p>The To-Do List project relies on several key dependencies and libraries. Understanding these dependencies is crucial for building and maintaining the application:</p>
+
+            <ul>
+                <li><strong>Express.js:</strong> Express is a powerful and flexible Node.js web application framework. It simplifies routing, middleware handling, and request/response management, making it ideal for building web applications.</li>
+                <li><strong>Mongoose:</strong> Mongoose is an Object Data Modeling (ODM) library for MongoDB. It acts as a bridge between the Node.js application and MongoDB, providing a schema-based solution for defining data models and managing database interactions.</li>
+                <li><strong>EJS (Embedded JavaScript):</strong> EJS is a template engine that enables dynamic content rendering in HTML. It allows you to embed JavaScript within HTML templates, making it easier to generate dynamic web pages.</li>
+                <li><strong>Body-parser:</strong> Body-parser is Express middleware used to parse incoming HTTP request bodies. It plays a crucial role in handling form submissions and JSON data sent by clients.</li>
+                <li><strong>MongoDB:</strong> MongoDB is a popular NoSQL database that offers flexibility in data storage. It is used to store and manage your to-do lists and items efficiently.</li>
+            </ul>
+
+            <p><strong>Example Code (Installing Dependencies):</strong></p>
+            <pre><code>
+// Install dependencies using npm
+npm install express mongoose ejs body-parser mongodb
+            </code></pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Server Logic</h2>
+            <p>The server-side logic is the backbone of the To-Do List application. It handles incoming requests, manages data, and communicates with the database. Below are key server logic components:</p>
+
+            <ul>
+                <li><strong>Express Routes:</strong> Express routes define the endpoints and actions for your application. They determine how the server responds to specific URL requests. For instance, routes handle displaying lists, adding items, and deleting items.</li>
+                <li><strong>Mongoose Models:</strong> Mongoose models define the structure of data stored in MongoDB. In this project, we use the 'Item' and 'List' models. The 'Item' model represents individual to-do items, while the 'List' model represents custom lists containing these items.</li>
+                <li><strong>Middleware:</strong> Middleware functions are intermediary functions that can execute tasks before or after a route handler. For example, 'body-parser' middleware parses incoming request bodies to make data accessible in route handlers.</li>
+                <li><strong>Static File Serving:</strong> Express serves static files like CSS and images to enhance the user interface of your application. It ensures that your styles and images are delivered efficiently to clients.</li>
+            </ul>
+
+            <p><strong>Example Code (Server Logic):</strong></p>
+            <pre><code>
+// Define Express routes
+app.get("/", (req, res) => {
+    // Display to-do lists and items
+});
+
+app.post("/", (req, res) => {
+    // Add a new to-do item
+});
+
+// Define Mongoose models
+const itemSchema = new mongoose.Schema({
+    name: String
+});
+
+const listSchema = new mongoose.Schema({
+    name: String,
+    items: [itemSchema]
+});
+            </code></pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Frontend Components</h2>
+            <p>The frontend of the To-Do List application is responsible for creating an interactive and user-friendly interface. Here's how the frontend components work:</p>
+
+            <ul>
+                <li><strong>EJS Templates:</strong> EJS templates allow you to generate dynamic HTML content. You'll find template files for rendering lists and displaying to-do items.</li>
+                <li><strong>HTML Forms:</strong> HTML forms enable users to input data. In this project, forms are used for adding new items and creating custom lists.</li>
+                <li><strong>JavaScript:</strong> JavaScript enhances interactivity. For example, it allows you to toggle item completion with checkboxes and dynamically update the UI.</li>
+                <li><strong>CSS Styling:</strong> Cascading Style Sheets (CSS) define the visual presentation of your application. Styling is used to make your to-do lists and items visually appealing.</li>
+            </ul>
+
+            <p><strong>Example Code (Frontend Components):</strong></p>
+            <pre><code>
+<!-- EJS Template Example -->
+&lt;% include("header") -%&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1 class="title"&gt;To-Do List&lt;/h1&gt;
+        &lt;form action="/" method="POST"&gt;
+            &lt;input type="text" name="newItem" placeholder="New Item" required&gt;
+            &lt;button type="submit"&gt;+&lt;/button&gt;
+        &lt;/form&gt;
+        &lt;ul&gt;
+            &lt;% newListItems.forEach(function(item) { %&gt;
+                &lt;li&gt;
+                    &lt;input type="checkbox" name="checkbox" value="&lt;%= item._id %&gt;"&gt;
+                    &lt;p&gt;&lt;%= item.name %&gt;&lt;/p&gt;
+                &lt;/li&gt;
+            &lt;% }); %&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;% include("footer") -%&gt;
+            </code></pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Database Interaction</h2>
+            <p>The application relies on MongoDB to store and retrieve to-do lists and items. Here's how database interaction works:</p>
+
+            <ul>
+                <li><strong>MongoDB Connection:</strong> The application connects to a MongoDB database using the 'mongoose' library. The connection URL and options are specified during setup.</li>
+                <li><strong>Mongoose Models:</strong> Mongoose models define the data structure. In this case, the 'Item' and 'List' models help manage items and lists within the database.</li>
+                <li><strong>CRUD Operations:</strong> The application performs Create, Read, Update, and Delete (CRUD) operations on the database. For instance, items are created, read, and deleted when users interact with the to-do lists.</li>
+            </ul>
+
+            <p><strong>Example Code (Database Interaction):</strong></p>
+            <pre><code>
+// Connect to MongoDB
+mongoose.connect("mongodb://localhost:27017/todolistDB", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
+// Define Mongoose models
+const itemSchema = new mongoose.Schema({
+    name: String
+});
+
+const listSchema = new mongoose.Schema({
+    name: String,
+    items: [itemSchema]
+});
+
+// Perform CRUD operations (e.g., create, read, update, delete)
+const Item = mongoose.model("Item", itemSchema);
+const List = mongoose.model("List", listSchema);
+            </code></pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Customization</h2>
+            <p>The To-Do List application can be customized to fit your needs. Here are some ways you can personalize the project:</p>
+
+            <ul>
+                <li><strong>Default Items:</strong> You can modify the default to-do items by editing the code. These items are displayed when a custom list is created for the first time.</li>
+                <li><strong>CSS Styling:</strong> The application's appearance and styling can be customized by modifying the CSS file. Adjust colors, fonts, and layout to match your preferences.</li>
+            </ul>
+
+            <p><strong>Example Code (Customization):</strong></p>
+            <pre><code>
+/* Default Items Example */
+const item1 = new Item({
+    name: "Welcome to your To-Do List"
+});
+
+const item2 = new Item({
+    name: "Hit + button to add a new item"
+});
+
+const item3 = new Item({
+    name: "&lt;-- Hit checkbox to delete an item"
+});
+
+const defaultItems = [item1, item2, item3];
+            </code></pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Further Assistance</h2>
+            <p>If you need additional assistance or encounter issues with the application, there are resources available to help:</p>
+
+            <ul>
+                <li><strong>GitHub Repository:</strong> You can refer to the project's GitHub repository for documentation, updates, and issues. The repository provides insights into the project's development.</li>
+                <li><strong>Support Team:</strong> For general inquiries and support, you can contact our support team at sulfanaidid@gmail.com. We're here to assist you with any questions or concerns you may have.</li>
+            </ul>
+        </section>
+
+        <!-- Add more sections to cover additional topics as needed -->
+
+    </div>
+</body>
+<%- include("footer") -%>
