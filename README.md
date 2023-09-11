@@ -1,60 +1,69 @@
-Project Name: Todolist-v1
+# TodoList-v1
 
-Description
-This project, Todolist-v1, is a simple web application for creating and managing to-do lists. It allows users to add, edit, and delete tasks on their to-do lists. This README.md file provides essential information about the project, including its dependencies, installation instructions, and usage.
+TodoList-v1 is a simple web application for managing your to-do tasks. It provides a user-friendly interface for adding, editing, and removing tasks. This README.md file provides information on how to set up and run the application, as well as its dependencies and usage.
 
-Table of Contents
-Installation
-Usage
-Dependencies
-License
-Author
-Installation
-To run this project on your local machine, follow these steps:
+## Table of Contents
 
-Clone the repository to your local machine:
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 
-bash
-Copy code
-git clone https://github.com/sulfan-fithub/todolist-v1.git
-Navigate to the project directory:
+## Dependencies
 
-bash
-Copy code
-cd todolist-v1
-Install the project dependencies using npm:
+TodoList-v1 is built using Node.js and relies on the following npm packages:
 
-bash
-Copy code
-npm install
-Start the application:
+- `body-parser`: A middleware for handling HTTP request bodies.
+- `ejs`: A templating engine for rendering HTML templates.
+- `express`: A web application framework for Node.js.
+- `mongoose`: An Object Data Modeling (ODM) library for MongoDB.
 
-bash
-Copy code
-npm start
-Open your web browser and visit http://localhost:3000 to use the Todolist-v1 application.
+You can find more details about these packages in the [package.json](package.json) file.
 
-Usage
-Once the application is running, you can use it to:
+## Installation
 
-Add tasks to your to-do list.
-Edit existing tasks.
-Mark tasks as completed.
-Delete tasks from your to-do list.
-Dependencies
-The project uses the following dependencies:
+To run TodoList-v1 locally, follow these steps:
 
-body-parser: ^1.18.3
-ejs: ^2.6.1
-express: ^4.16.3
-mongoose: ^7.5.0
-You can find more information about these packages on their respective npm pages.
+1. Clone the repository to your local machine:
 
-License
-This project is licensed under the ISC License - see the LICENSE file for details.
+   ```bash
+   git clone https://github.com/your-username/todolist-v1.git
+   ```
 
-Author
-Your Name
-GitHub: sulfanaidid
-Email: sulfan@fithub.id
-Feel free to reach out if you have any questions or feedback!
+2. Navigate to the project directory:
+
+   ```bash
+   cd todolist-v1
+   ```
+
+3. Install the project dependencies using npm:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the application:
+
+   ```bash
+   npm start
+   ```
+
+5. Open your web browser and go to [http://localhost:3000](http://localhost:3000) to access the TodoList-v1 application.
+
+## Usage
+
+Once the application is running, you can use it to manage your to-do tasks:
+
+- **Add a Task:** Enter a task description in the input field and click the "Add" button to add it to the list.
+
+- **Edit a Task:** Click the "Edit" button next to a task to modify its description.
+
+- **Delete a Task:** Click the "Delete" button to remove a task from the list.
+
+## License
+
+This project is licensed under the ISC License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+Feel free to customize this README.md file further to include additional information about your project, such as screenshots, usage examples, and any other relevant details.
